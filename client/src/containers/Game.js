@@ -14,12 +14,13 @@ import SpeechBubble from "../components/SpeechBubble";
 import TimeRemaining from "../components/TimeRemaining";
 import WordToDraw from "../components/WordToDraw";
 import Wrapper from "../components/Wrapper";
-import Zorb from "../components/Zorb";
-import ZorbContainer from "../components/ZorbContainer";
-import ZorbThinkingContainer from "../components/ZorbThinkingContainer";
+import Bugy from "../components/Bugy";
+import BugyContainer from "../components/BugyContainer";
+import BugyThinkingContainer from "../components/BugyThinkingContainer";
 
 export const Game = ({ history, game, currentUser }) => {
   const [count, setCount] = useState(0);
+  // eslint-disable-next-line
   const [guessCount, setGuessCount] = useState(0);
   const [time, setTime] = useState(0);
 
@@ -82,14 +83,14 @@ export const Game = ({ history, game, currentUser }) => {
       <Canvas />
 
       <GuessingContainer>
-        <ZorbThinkingContainer>
-          <ZorbContainer zorbGuessing>
-            <Zorb />
-          </ZorbContainer>
-          <SpeechBubble zorbThinking>
+        <BugyThinkingContainer>
+          <BugyContainer bugyGuessing>
+            <Bugy />
+          </BugyContainer>
+          <SpeechBubble bugyThinking>
             <Guessing guess={game.guess} />
           </SpeechBubble>
-        </ZorbThinkingContainer>
+        </BugyThinkingContainer>
 
         <TimeRemaining>
           <Countdown date={time} renderer={renderer} />

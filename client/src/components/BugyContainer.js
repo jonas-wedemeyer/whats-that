@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components/macro";
 
-const ZorbContainer = styled.div`
+const BugyContainer = styled.div`
   svg {
     width: 150px;
     filter: drop-shadow(1px 3px 2px rgba(0, 0, 0, 0.1));
@@ -21,7 +21,7 @@ const ZorbContainer = styled.div`
   }
 
   ${props =>
-    props.zorbGuessing &&
+    props.bugyGuessing &&
     css`
       transform: scale(0.6);
       margin: 0px 20px -60px -20px;
@@ -35,4 +35,4 @@ const ZorbContainer = styled.div`
     `};
 `;
 
-export default ZorbContainer;
+export default BugyContainer;

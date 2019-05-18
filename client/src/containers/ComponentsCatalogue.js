@@ -27,7 +27,7 @@ import SpeechBubble from "../components/SpeechBubble";
 import TestVG from "../components/TestVG";
 import WordToDraw from "../components/WordToDraw";
 import Wrapper from "../components/Wrapper";
-import Zorb from "../components/Zorb";
+import Bugy from "../components/Bugy";
 
 export const ComponentsCatalogue = () => {
   return (
@@ -64,7 +64,7 @@ export const ComponentsCatalogue = () => {
           <li>Button</li>
         </ul>
         <div>
-          <Zorb />
+          <Bugy />
           <p>
             You draw, BUGY guesses. You have only 20 seconds per round to show
             off your artistic skills. Can BUGY understand what you are trying to

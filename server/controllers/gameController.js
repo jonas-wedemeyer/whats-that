@@ -122,6 +122,10 @@ const GameController = () => {
           socket,
           handleMessage('failure', '{error: gameExist}')
         );
+
+      const playersOnGame = await getPlayersFromGame(gameKey);
+      if (playersOnGame.includes(socket.io)) return;
+
       await addGame(gameKey, TOTALROUNDS);
       await addPlayer(message.payload.player, socket.id);
       await addPlayerToGame(socket.id, gameKey, true);
@@ -167,9 +171,11 @@ const GameController = () => {
           // socket.disconnect();
           return;
         }
-        const numOfPlayersOnGame = await getPlayersFromGame(gameKey);
+        const playersOnGame = await getPlayersFromGame(gameKey);
 
-        if (Object.keys(numOfPlayersOnGame).length > maxNumPlayers - 1)
+        if (playersOnGame.includes(socket.io)) return;
+
+        if (Object.keys(playersOnGame).length > maxNumPlayers - 1)
           return sendMessageToClient(
             socket,
             handleMessage('failure', { error: 'Max num of player reached' })

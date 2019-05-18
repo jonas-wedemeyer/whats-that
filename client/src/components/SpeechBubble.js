@@ -56,7 +56,7 @@ const SpeechBubble = styled.span`
     `};
 
   ${props =>
-    props.zorbThinking &&
+    props.bugyThinking &&
     css`
       animation: none;
       background-color: #472c81;

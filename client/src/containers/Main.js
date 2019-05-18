@@ -10,8 +10,8 @@ import * as Actions from "../redux/actions/index";
 // Component & Container Imports
 import Button from "../components/Button";
 import Wrapper from "../components/Wrapper";
-import Zorb from "../components/Zorb";
-import ZorbContainer from "../components/ZorbContainer";
+import Bugy from "../components/Bugy";
+import BugyContainer from "../components/BugyContainer";
 
 // Library Imports
 import styled from "styled-components/macro";
@@ -20,9 +20,9 @@ export const Main = props => {
   return (
     <Wrapper>
       <Container>
-        <ZorbContainer>
-          <Zorb />
-        </ZorbContainer>
+        <BugyContainer>
+          <Bugy />
+        </BugyContainer>
         <div>
           <Header>{`What's that?`}</Header>
           <Hero>

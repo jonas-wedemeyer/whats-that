@@ -1,6 +1,6 @@
 # **What's That?!** Drawing Application
 
-<a href="https://codeworks.me/"><img src="./client/public/codeworks.svg" height="30" /></a> <img src="https://img.shields.io/npm/l/express.svg" height="30" />
+<a href="https://codeworks.me/"><img src="./client/public/codeworks.svg" height="30" /></a> <img src="https://img.shields.io/npm/l/express.svg"  />
 
 <hr/>
 

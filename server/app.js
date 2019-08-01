@@ -4,7 +4,7 @@ const cors = require('kcors');
 const bodyparser = require('koa-body');
 
 const router = require('./router');
-const PORT = 2000;
+const PORT = 3001;
 
 const inputRouter = require('./socketRouter/inputRouter');
 

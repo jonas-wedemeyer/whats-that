@@ -69,16 +69,18 @@ const Join = ({ game, pages, connectGame, history, currentUser }) => {
         <SpeechBubble inGame>Looking good!</SpeechBubble>
         <div>
           <AvatarContainer
+            data-testid="avatar-container"
             style={{ transform: "scale(2.5)", marginTop: "2vh" }}
           >
             <PlayerAvatar userChoice={userChoice} />
           </AvatarContainer>
         </div>
-        <Button refresh onClick={refreshAvatar}>
+        <Button data-testid="refresh" refresh onClick={refreshAvatar}>
           <i className="fas fa-sync-alt" />
         </Button>
         <FormLabel>Name</FormLabel>
         <InputField
+          placeholder="Name"
           type="text"
           name="name"
           onChange={handlePlayerName}
@@ -88,6 +90,7 @@ const Join = ({ game, pages, connectGame, history, currentUser }) => {
 
         <FormLabel>Enter Game ID:</FormLabel>
         <InputField
+          placeholder="Game ID"
           type="text"
           name="gameName"
           onChange={handleGameName}
@@ -95,14 +98,19 @@ const Join = ({ game, pages, connectGame, history, currentUser }) => {
           required
         />
 
-        <ButtonContainer>
-          <Button primary formButton type="submit">
+        <ButtonContainer data-testid="button-container">
+          <Button data-testid="join" primary formButton type="submit">
             Join
           </Button>
           <p className="small lightweight">or</p>
 
-          <Button back marginBottom type="button" onClick={goBack}>
-
+          <Button
+            data-testid="back"
+            back
+            marginBottom
+            type="button"
+            onClick={goBack}
+          >
             Back
           </Button>
         </ButtonContainer>

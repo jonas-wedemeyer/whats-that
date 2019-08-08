@@ -20,10 +20,14 @@ const mockHistory = {
   goBack: jest.fn()
 };
 
+const mockFunctions = {
+  onChange: jest.fn()
+};
+
 const renderComponent = () =>
   render(
     <Provider store={store}>
-      <Join history={mockHistory} />
+      <Join history={mockHistory} onChange={mockFunctions.onChange} />
     </Provider>
   );
 
@@ -87,9 +91,11 @@ describe("Avatar changes upon click", () => {
 
     const prevAvatar = store.getState().currentUser.userAvatar;
     fireEvent.click(refreshButton);
+    // dispatch test is not possible as here only the local state is updated
+    // however PlayerAvatar.js has a dispatcher to store, should be tested there
     const newAvatar = store.getState().currentUser.userAvatar;
 
-    expect(prevAvatar).not.toEqual(newAvatar);
+    expect(prevAvatar).not.toBe(newAvatar);
   });
 });
 
@@ -97,6 +103,10 @@ describe("Check Input Fields", () => {
   test("If the value of the Name input field changes on change", () => {
     const { getByPlaceholderText } = renderComponent();
     const nameField = getByPlaceholderText("Name");
+
+    // did not use a spy method, because we would have overwritten
+    // actual onChange method
+    expect(nameField.value).toBe("");
     fireEvent.change(nameField, { target: { value: "Fabio" } });
     expect(nameField.value).toBe("Fabio");
   });
@@ -104,6 +114,8 @@ describe("Check Input Fields", () => {
   test("If the value of the game ID input fiel changes on change", () => {
     const { getByPlaceholderText } = renderComponent();
     const gameField = getByPlaceholderText("Game ID");
+
+    expect(gameField.value).toBe("");
     fireEvent.change(gameField, { target: { value: "Aged-Turn" } });
     expect(gameField.value).toBe("Aged-Turn");
   });
@@ -118,14 +130,18 @@ describe("Submit Form", () => {
 
     fireEvent.change(nameField, { target: { value: "Fabio" } });
     fireEvent.change(gameField, { target: { value: "Aged-Turn" } });
+
+    const prevUserState = store.getState().currentUser;
+
+    expect(prevUserState.playerName).toBeUndefined();
+    expect(prevUserState.gameKey).toBeUndefined();
+
     fireEvent.click(joinButton);
 
-    // check if action has been dispatched to store
+    const newUserState = store.getState().currentUser;
 
-    const { currentUser } = store.getState();
-
-    expect(currentUser.playerName).toBe("Fabio");
-    expect(currentUser.gameKey).toBe("Aged-Turn");
+    expect(newUserState.playerName).toBe("Fabio");
+    expect(newUserState.gameKey).toBe("Aged-Turn");
   });
 
   it("Form should not be submitted if empty", () => {
